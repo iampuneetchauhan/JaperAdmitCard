@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="employee_report" pageWidth="595" pageHeight="842" columnWidth="515"
+              leftMargin="40" rightMargin="40" topMargin="50" bottomMargin="50">
+
+    <!-- Parameters -->
+    <parameter name="employeeId" class="java.lang.String"/>
+    <parameter name="name" class="java.lang.String"/>
+    <parameter name="email" class="java.lang.String"/>
+    <parameter name="phone" class="java.lang.String"/>
+    <parameter name="skills" class="java.lang.String" isForPrompting="false"/>
+    <parameter name="basicSalary" class="java.lang.Double" isForPrompting="false"/>
+    <parameter name="allowances" class="java.lang.Double" isForPrompting="false"/>
+    <parameter name="deductions" class="java.lang.Double" isForPrompting="false"/>
+    <parameter name="netSalary" class="java.lang.Double" isForPrompting="false"/>
+
+    <!-- Report Header -->
+    <title>
+        <band height="50">
+            <textField>
+                <reportElement x="200" y="10" width="200" height="30"/>
+                <textElement>
+                    <font size="18" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{name} + ($P{basicSalary} != null ? "'s Salary Slip" : "'s ID-Card")]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+
+    <!-- Report Body -->
+    <detail>
+        <band height="250">
+            <textField>
+                <reportElement x="50" y="10" width="400" height="20"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Employee ID: " + $P{employeeId}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="50" y="40" width="400" height="20"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Email: " + $P{email}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="50" y="70" width="400" height="20"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Phone: " + $P{phone}]]></textFieldExpression>
+            </textField>
+
+            <textField isStretchWithOverflow="true">
+                <reportElement x="50" y="100" width="400" height="20"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{skills} != null ? "Skills: " + $P{skills} : ""]]></textFieldExpression>
+            </textField>
+
+            <textField isStretchWithOverflow="true">
+                <reportElement x="50" y="130" width="400" height="20"/>
+                <textElement>
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{basicSalary} != null ? "Basic Salary: $" + $P{basicSalary} : ""]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="50" y="160" width="400" height="20"/>
+                <textElement>
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{allowances} != null ? "Allowances: $" + $P{allowances} : ""]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="50" y="190" width="400" height="20"/>
+                <textElement>
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{deductions} != null ? "Deductions: $" + $P{deductions} : ""]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="50" y="220" width="400" height="20"/>
+                <textElement>
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{netSalary} != null ? "Net Salary: $" + $P{netSalary} : ""]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+</jasperReport>
