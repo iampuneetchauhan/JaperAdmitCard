@@ -11,59 +11,44 @@ import java.util.Map;
 @Service
 public class JasperReportService {
 
-    public byte[] generateResumePdf(String employeeId, String name, String email, String phone, String skills) throws JRException {
+    public byte[] generateAdmitCardPdf(String rollNo, String name, String fatherName, String course,
+                                       String examDate, String examTime, String examCentre) throws JRException {
         try {
-            // Load the JRXML file for the employee resume
+            // Load the JRXML file
             InputStream reportStream = new ClassPathResource("reports/hello_world.jrxml").getInputStream();
 
-            // Compile the JRXML file into a JasperReport
+            // Compile the JRXML file
             JasperReport jasperReport = JasperCompileManager.compileReport(reportStream);
 
-            // Create a map to store employee data
-            Map<String, Object> parameters = new HashMap<>();
-            parameters.put("employeeId", employeeId);
-            parameters.put("name", name);
-            parameters.put("email", email);
-            parameters.put("phone", phone);
-            parameters.put("skills", skills);
+            // Load images as InputStream
+            InputStream logo1Stream = new ClassPathResource("static/LOGO1.jpg").getInputStream();
+            InputStream logo2Stream = new ClassPathResource("static/LOGO2.jpg").getInputStream();
+            InputStream logo3Stream = new ClassPathResource("static/LOGO3.jpg").getInputStream();
+            InputStream qrCodeStream = new ClassPathResource("static/qr.jpg").getInputStream();
 
-            // Fill the report with provided employee data
+            // Prepare parameters
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("RollNo", rollNo);
+            parameters.put("Name", name);
+            parameters.put("FatherName", fatherName);
+            parameters.put("Course", course);
+            parameters.put("ExamDate", examDate);
+            parameters.put("ExamTime", examTime);
+            parameters.put("ExamCentre", examCentre);
+
+            // Pass images as InputStream
+            parameters.put("LOGO1", logo1Stream);
+            parameters.put("LOGO2", logo2Stream);
+            parameters.put("LOGO3", logo3Stream);
+            parameters.put("QR_CODE", qrCodeStream);
+
+            // Fill the report
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
 
             // Export the report to a PDF byte array
             return JasperExportManager.exportReportToPdf(jasperPrint);
         } catch (Exception e) {
-            throw new JRException("Error generating resume PDF", e);
-        }
-    }
-
-    public byte[] generateSalaryPdf(String employeeId, String name, String email, String phone, 
-                                    double basicSalary, double allowances, double deductions, double netSalary) throws JRException {
-        try {
-            // Load the JRXML file for the salary slip
-            InputStream reportStream = new ClassPathResource("reports/hello_world.jrxml").getInputStream();
-
-            // Compile the JRXML file into a JasperReport
-            JasperReport jasperReport = JasperCompileManager.compileReport(reportStream);
-
-            // Create a map to store salary details
-            Map<String, Object> parameters = new HashMap<>();
-            parameters.put("employeeId", employeeId);
-            parameters.put("name", name);
-            parameters.put("email", email);
-            parameters.put("phone", phone);
-            parameters.put("basicSalary", basicSalary);
-            parameters.put("allowances", allowances);
-            parameters.put("deductions", deductions);
-            parameters.put("netSalary", netSalary);
-
-            // Fill the report with provided salary data
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
-
-            // Export the report to a PDF byte array
-            return JasperExportManager.exportReportToPdf(jasperPrint);
-        } catch (Exception e) {
-            throw new JRException("Error generating salary PDF", e);
+            throw new JRException("Error generating admit card PDF", e);
         }
     }
 }
