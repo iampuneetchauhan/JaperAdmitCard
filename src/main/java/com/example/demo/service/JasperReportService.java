@@ -25,6 +25,9 @@ public class JasperReportService {
             InputStream logo2Stream = new ClassPathResource("static/LOGO2.jpg").getInputStream();
             InputStream logo3Stream = new ClassPathResource("static/LOGO3.jpg").getInputStream();
             InputStream qrCodeStream = new ClassPathResource("static/qr.jpg").getInputStream();
+            InputStream placeholderStream = new ClassPathResource("static/placeholders.png").getInputStream();
+            InputStream footerStream = new ClassPathResource("static/footer.png").getInputStream();
+            InputStream radioButtonStream = new ClassPathResource("static/admitcardradiobutton.png").getInputStream();
 
             // Prepare parameters
             Map<String, Object> parameters = new HashMap<>();
@@ -41,6 +44,9 @@ public class JasperReportService {
             parameters.put("LOGO2", logo2Stream);
             parameters.put("LOGO3", logo3Stream);
             parameters.put("QR_CODE", qrCodeStream);
+            parameters.put("PLACEHOLDER", placeholderStream);
+            parameters.put("FOOTER", footerStream);
+            parameters.put("RADIO_BUTTON", radioButtonStream);
 
             // Fill the report
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());

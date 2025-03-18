@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1 -->
 <jasperReport name="AdmitCard" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    
-    <!-- Define Parameters -->
     <parameter name="LOGO1" class="java.io.InputStream"/>
     <parameter name="LOGO2" class="java.io.InputStream"/>
     <parameter name="LOGO3" class="java.io.InputStream"/>
     <parameter name="QR_CODE" class="java.io.InputStream"/>
+    <parameter name="PLACEHOLDER" class="java.io.InputStream"/>
+    <parameter name="FOOTER" class="java.io.InputStream"/>
+    <parameter name="RADIO_BUTTON" class="java.io.InputStream"/>
+    
     <parameter name="RollNo" class="java.lang.String"/>
     <parameter name="Name" class="java.lang.String"/>
     <parameter name="FatherName" class="java.lang.String"/>
@@ -15,152 +18,114 @@
     <parameter name="ExamCentre" class="java.lang.String"/>
 
     <title>
-        <band height="100">
+        <band height="110">
             <image>
-                <reportElement x="10" y="10" width="150" height="80"/>
+                <reportElement x="210" y="-10" width="204" height="120"/>
                 <imageExpression><![CDATA[$P{LOGO1}]]></imageExpression>
             </image>
             <image>
-                <reportElement x="220" y="10" width="150" height="80"/>
+                <reportElement x="-10" y="0" width="200" height="100"/>
                 <imageExpression><![CDATA[$P{LOGO2}]]></imageExpression>
             </image>
             <image>
-                <reportElement x="430" y="10" width="150" height="80"/>
+                <reportElement x="330" y="0" width="240" height="110"/>
                 <imageExpression><![CDATA[$P{LOGO3}]]></imageExpression>
             </image>
         </band>
     </title>
 
     <detail>
-        <band height="360">
+        <band height="502">
             <staticText>
-                <reportElement x="200" y="20" width="200" height="30" forecolor="#0000CC"/>
+                <reportElement x="200" y="20" width="200" height="30" forecolor="#0F64BF"/>
                 <textElement textAlignment="Center">
-                    <font fontName="SansSerif" size="18" isBold="true"/>
+                    <font isBold="true" pdfFontName="Helvetica-Bold"/>
                 </textElement>
                 <text><![CDATA[ADMIT CARD]]></text>
             </staticText>
-            
             <staticText>
-                <reportElement x="50" y="70" width="100" height="20" forecolor="#0000CC"/>
+                <reportElement x="50" y="70" width="100" height="20" forecolor="#0F64BF"/>
                 <textElement>
-                    <font fontName="SansSerif" size="12" isBold="true"/>
+                    <font isBold="true" pdfFontName="Helvetica-Bold"/>
                 </textElement>
-                <text><![CDATA[Roll No:]]></text>
+                <text><![CDATA[ Roll No.:]]></text>
             </staticText>
             <textField>
-                <reportElement x="150" y="70" width="200" height="20"/>
+                <reportElement x="150" y="70" width="200" height="20" forecolor="#0F64BF"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
                 <textFieldExpression><![CDATA[$P{RollNo}]]></textFieldExpression>
             </textField>
-
             <staticText>
-                <reportElement x="50" y="100" width="100" height="20" forecolor="#0000CC"/>
+                <reportElement x="50" y="100" width="100" height="20" forecolor="#0F64BF"/>
                 <textElement>
-                    <font fontName="SansSerif" size="12" isBold="true"/>
+                    <font isBold="true" pdfFontName="Helvetica-Bold"/>
                 </textElement>
-                <text><![CDATA[Name:]]></text>
+                <text><![CDATA[ Name:]]></text>
             </staticText>
             <textField>
-                <reportElement x="150" y="100" width="300" height="20"/>
+                <reportElement x="150" y="100" width="300" height="20" forecolor="#0F64BF"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
                 <textFieldExpression><![CDATA[$P{Name}]]></textFieldExpression>
             </textField>
-
             <staticText>
-                <reportElement x="50" y="130" width="100" height="20" forecolor="#0000CC"/>
+                <reportElement x="50" y="130" width="100" height="20" forecolor="#0F64BF"/>
                 <textElement>
-                    <font fontName="SansSerif" size="12" isBold="true"/>
+                    <font isBold="true" pdfFontName="Helvetica-Bold"/>
                 </textElement>
-                <text><![CDATA[Father Name:]]></text>
+                <text><![CDATA[ Father Name:]]></text>
             </staticText>
             <textField>
-                <reportElement x="150" y="130" width="300" height="20"/>
+                <reportElement x="150" y="130" width="300" height="20" forecolor="#0F64BF"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
                 <textFieldExpression><![CDATA[$P{FatherName}]]></textFieldExpression>
             </textField>
-
+                        <image>
+                <reportElement x="160" y="250" width="50" height="50"/>
+                <imageExpression><![CDATA[$P{RADIO_BUTTON}]]></imageExpression>
+            </image>
             <staticText>
-                <reportElement x="50" y="160" width="100" height="20" forecolor="#0000CC"/>
+                <reportElement x="50" y="190" width="100" height="20" forecolor="#0F64BF"/>
                 <textElement>
-                    <font fontName="SansSerif" size="12" isBold="true"/>
+                    <font isBold="true" pdfFontName="Helvetica-Bold"/>
                 </textElement>
-                <text><![CDATA[Course:]]></text>
+                <text><![CDATA[ Exam Date:]]></text>
             </staticText>
             <textField>
-                <reportElement x="150" y="160" width="300" height="20"/>
-                <textFieldExpression><![CDATA[$P{Course}]]></textFieldExpression>
-            </textField>
-
-            <staticText>
-                <reportElement x="50" y="190" width="100" height="20" forecolor="#0000CC"/>
+                <reportElement x="150" y="190" width="300" height="20" forecolor="#0F64BF"/>
                 <textElement>
-                    <font fontName="SansSerif" size="12" isBold="true"/>
+                    <font isBold="true"/>
                 </textElement>
-                <text><![CDATA[Exam Date:]]></text>
-            </staticText>
-            <textField>
-                <reportElement x="150" y="190" width="300" height="20"/>
                 <textFieldExpression><![CDATA[$P{ExamDate}]]></textFieldExpression>
             </textField>
-
             <staticText>
-                <reportElement x="50" y="220" width="100" height="20" forecolor="#0000CC"/>
+                <reportElement x="50" y="220" width="120" height="20" forecolor="#0F64BF"/>
                 <textElement>
-                    <font fontName="SansSerif" size="12" isBold="true"/>
+                    <font isBold="true" pdfFontName="Helvetica-Bold"/>
                 </textElement>
-                <text><![CDATA[Exam Time:]]></text>
+                <text><![CDATA[ Examination Centre:]]></text>
             </staticText>
             <textField>
-                <reportElement x="150" y="220" width="300" height="20"/>
-                <textFieldExpression><![CDATA[$P{ExamTime}]]></textFieldExpression>
-            </textField>
-
-            <staticText>
-                <reportElement x="50" y="250" width="100" height="20" forecolor="#0000CC"/>
+                <reportElement x="180" y="220" width="300" height="20" forecolor="#0F64BF"/>
                 <textElement>
-                    <font fontName="SansSerif" size="12" isBold="true"/>
+                    <font isBold="true"/>
                 </textElement>
-                <text><![CDATA[Exam Centre:]]></text>
-            </staticText>
-            <textField>
-                <reportElement x="150" y="250" width="300" height="20"/>
                 <textFieldExpression><![CDATA[$P{ExamCentre}]]></textFieldExpression>
             </textField>
-        </band>
-    </detail>
 
-    <pageFooter>
-        <band height="130">
-            <staticText>
-                <reportElement x="0" y="10" width="440" height="30"/>
-                <textElement>
-                    <font fontName="SansSerif" size="10"/>
-                </textElement>
-                <text><![CDATA[
-Exam Pattern: Question paper contains 2 section of 60 minutes: Section (A) Mental Ability Test,Section(B) Aptitude Test. Note: There will be no negative marking for the above exam
-]]></text>
-            </staticText>
-            <staticText>
-                <reportElement x="0" y="40" width="440" height="50"/>
-                <textElement>
-                    <font fontName="SansSerif" size="10"/>
-                </textElement>
-                <text><![CDATA[Instructions to the Candidate:
-Keep your admit card carefully and bring it to the examination hall.
-Write your name and father's name in the space provided, and affix your passport-size photograph on the admit card.
-The result of the Lakshya 30 exam will be declared on our website www.nmsociety.org or in the newspapers Amar Ujala, Dainik Jagran, or Hindustan.
-Candidates must report to the examination centre at least 30 minutes before the scheduled time.
-Save the Lakshya 30 WhatsApp number: 8394977999 in your phone and send your name and roll number to this number. You will receive all examination-related information via WhatsApp.]]></text>
-            </staticText>
-            <staticText>
-                <reportElement x="0" y="100" width="440" height="30"/>
-                <textElement>
-                    <font fontName="SansSerif" size="10"/>
-                </textElement>
-                <text><![CDATA[Deposit of Examination Fee: "Please depoist the examination fee of Rs 100/ -via Paytm to phone number 8868808331 or by scanning the provided QR code]]></text>
-            </staticText>
             <image>
-                <reportElement x="450" y="30" width="110" height="100"/>
+                <reportElement x="50" y="290" width="504" height="199"/>
+                <imageExpression><![CDATA[$P{FOOTER}]]></imageExpression>
+            </image>
+            <image>
+                <reportElement x="390" y="430" width="90" height="59"/>
                 <imageExpression><![CDATA[$P{QR_CODE}]]></imageExpression>
             </image>
         </band>
-    </pageFooter>
+    </detail>
 </jasperReport>
